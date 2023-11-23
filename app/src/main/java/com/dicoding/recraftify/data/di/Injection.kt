@@ -1,3 +1,5 @@
 package com.dicoding.recraftify.data.di
 
-object Injection {}
+object Injection {
+
+}
