@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 object Injection {
+
     fun provideInjection(context: Context): Repository{
         val preference = UserPreference.getInstance(context.dataStore)
         val user = runBlocking { preference.getSession().first() }

@@ -5,7 +5,7 @@ import com.dicoding.recraftify.data.preferences.UserPreference
 
 class Repository constructor(
     private val userPreference: UserPreference,
-    private val apiService: ApiService
+    private val apiService: ApiService,
 ){
     fun register(name: String, email: String, password: String){
 
