@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import com.dicoding.recraftify.databinding.ActivitySplashScreenBinding
+import com.dicoding.recraftify.ui.activity.welcome.WelcomeActivity
 
 class SplashScreen : AppCompatActivity() {
 

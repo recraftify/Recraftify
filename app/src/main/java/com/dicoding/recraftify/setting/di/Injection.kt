@@ -1,4 +1,4 @@
-package com.dicoding.recraftify.data.di
+package com.dicoding.recraftify.setting.di
 
 import android.content.Context
 import com.dicoding.recraftify.data.Repository

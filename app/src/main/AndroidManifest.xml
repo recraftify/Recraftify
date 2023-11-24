@@ -35,10 +35,10 @@
             android:name=".ui.activity.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.SignupActivity"
+            android:name=".ui.activity.signup.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.WelcomeActivity"
+            android:name=".ui.activity.welcome.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.SplashScreen"
