@@ -40,12 +40,6 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_home, container, false)
 
-        viewModel.getSession().observe(requireActivity()){user ->
-            if(!user.isLogin){
-                startActivity(Intent(requireActivity(), WelcomeActivity::class.java))
-                activity?.finish()
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -75,6 +69,7 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     companion object {
         @JvmStatic
