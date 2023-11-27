@@ -3,20 +3,71 @@ package com.dicoding.recraftify.ui.activity.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.dicoding.recraftify.MainActivity
+import com.dicoding.recraftify.data.preferences.UserModel
 import com.dicoding.recraftify.databinding.ActivityLoginBinding
+import com.dicoding.recraftify.setting.ResultState
+import com.dicoding.recraftify.setting.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private val viewModel by viewModels<LoginViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
+        setAction()
+    }
 
+    fun setAction(){
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            val email = binding.inputEmail.text.toString()
+            val password = binding.inputPassword.text.toString()
+
+            viewModel.login(email, password).observe(this){result ->
+                when(result){
+                    is ResultState.Loading -> {
+                        showLoading(true)
+                    }
+                    is ResultState.Success -> {
+                        showLoading(false)
+                        viewModel.saveSession(UserModel(email,result.data.loginResult.token.toString(), true))
+                            AlertDialog.Builder(this). apply {
+                                setTitle("Ya!!!")
+                                setMessage("Anda berhasil login. Sudah tidak sabar untuk belajar mengenali sampah ya?")
+                                setPositiveButton("Lanjut"){ _,_ ->
+                                    val intent = Intent(context, MainActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                    finish()
+                                }
+                                create()
+                                show()
+                            }
+                    }
+                    is ResultState.Error -> {
+                        showLoading(false)
+                        showToast(result.error.toString())
+                    }
+                }
+
+            }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

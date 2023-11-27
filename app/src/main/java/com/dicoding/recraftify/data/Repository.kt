@@ -17,6 +17,17 @@ class Repository constructor(
     private val userPreference: UserPreference,
     private val apiService: ApiService,
 ){
+    fun login(email: String, password: String) = liveData {
+        emit(ResultState.Loading)
+        try {
+            val successResponse = apiService.login(email, password)
+            emit(ResultState.Success(successResponse))
+        }catch (e: HttpException){
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, RegisterResponse::class.java)
+            emit(ResultState.Error(errorResponse.message))
+        }
+    }
     fun register(name: String, email: String, password: String) = liveData{
         emit(ResultState.Loading)
         try {
