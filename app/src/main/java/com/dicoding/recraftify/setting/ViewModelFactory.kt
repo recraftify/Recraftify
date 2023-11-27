@@ -8,6 +8,7 @@ import com.dicoding.recraftify.setting.di.Injection
 import com.dicoding.recraftify.ui.activity.login.LoginViewModel
 import com.dicoding.recraftify.ui.activity.signup.SignupViewModel
 import com.dicoding.recraftify.ui.activity.welcome.WelcomeViewModel
+import com.dicoding.recraftify.ui.fragment.home.HomeViewModel
 
 class ViewModelFactory(private val repository: Repository): ViewModelProvider.NewInstanceFactory() {
 
@@ -22,6 +23,9 @@ class ViewModelFactory(private val repository: Repository): ViewModelProvider.Ne
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unkown ViewModel class: "+modelClass.name)
         }
