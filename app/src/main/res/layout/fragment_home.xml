@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.home.HomeFragment">
 
 
-    <!-- TODO: Update blank fragment layout -->
+        <com.google.android.material.search.SearchBar
+            android:id="@+id/sb_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/searchbar"
+            tools:layout_editor_absoluteY="6dp"/>
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:hint="@string/searchbar"
+                app:layout_anchor="@id/sb_home"/>
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="16dp"
         android:text="@string/hello_blank_fragment"
-        android:padding="16dp"/>
-
+        android:layout_marginTop="65dp"/>
 </FrameLayout>
