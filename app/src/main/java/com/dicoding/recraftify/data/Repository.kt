@@ -24,14 +24,14 @@ class Repository constructor(
             emit(ResultState.Success(successResponse))
         }catch (e: HttpException){
             val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, RegisterResponse::class.java)
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
             emit(ResultState.Error(errorResponse.message))
         }
     }
-    fun register(name: String, email: String, password: String) = liveData{
+    fun register(name: String, username: String, password: String) = liveData{
         emit(ResultState.Loading)
         try {
-            val succesResponse = apiService.register(name, email, password)
+            val succesResponse = apiService.register(name, username, password)
             emit(ResultState.Success(succesResponse))
         }catch (e: HttpException){
             val errorBody = e.response()?.errorBody()?.string()

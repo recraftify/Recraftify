@@ -7,7 +7,6 @@ import com.dicoding.recraftify.data.Repository
 import com.dicoding.recraftify.setting.di.Injection
 import com.dicoding.recraftify.ui.activity.login.LoginViewModel
 import com.dicoding.recraftify.ui.activity.signup.SignupViewModel
-import com.dicoding.recraftify.ui.activity.welcome.WelcomeViewModel
 import com.dicoding.recraftify.ui.fragment.home.HomeViewModel
 
 class ViewModelFactory(private val repository: Repository): ViewModelProvider.NewInstanceFactory() {
@@ -15,9 +14,6 @@ class ViewModelFactory(private val repository: Repository): ViewModelProvider.Ne
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when{
-            modelClass.isAssignableFrom(WelcomeViewModel::class.java) -> {
-                WelcomeViewModel(repository) as T
-            }
             modelClass.isAssignableFrom(SignupViewModel::class.java) -> {
                 SignupViewModel(repository) as T
             }

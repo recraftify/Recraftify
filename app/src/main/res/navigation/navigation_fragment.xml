@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_scan"
-        android:name="com.dicoding.recraftify.ui.fragment.ScanFragment"
+        android:name="com.dicoding.recraftify.ui.fragment.scan.ScanFragment"
         android:label="@string/scan"
         tools:layout="@layout/fragment_scan" />
 

@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.dicoding.recraftify.R
 import com.dicoding.recraftify.setting.ViewModelFactory
-import com.dicoding.recraftify.ui.activity.welcome.WelcomeActivity
-import com.dicoding.recraftify.ui.fragment.ARG_PARAM2
+import com.dicoding.recraftify.ui.activity.login.LoginActivity
+import com.dicoding.recraftify.ui.fragment.scan.ARG_PARAM2
 
 private const val ARG_PARAM1 = "param1"
 
@@ -57,7 +57,7 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
                     viewModel.logout()
                     viewModel.getSession().observe(requireActivity()){user ->
                         if(!user.isLogin){
-                            startActivity(Intent(requireActivity(), WelcomeActivity::class.java))
+                            startActivity(Intent(requireActivity(), LoginActivity::class.java))
                             activity?.finish()
                         }
                     }

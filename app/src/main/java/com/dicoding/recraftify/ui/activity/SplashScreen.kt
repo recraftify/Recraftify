@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
 import com.dicoding.recraftify.databinding.ActivitySplashScreenBinding
-import com.dicoding.recraftify.ui.activity.welcome.WelcomeActivity
+import com.dicoding.recraftify.ui.activity.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class SplashScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            startActivity(Intent(this, WelcomeActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         },2000 )
     }

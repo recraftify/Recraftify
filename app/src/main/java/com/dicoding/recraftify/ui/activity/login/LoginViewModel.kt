@@ -1,6 +1,8 @@
 package com.dicoding.recraftify.ui.activity.login
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.recraftify.data.Repository
 import com.dicoding.recraftify.data.preferences.UserModel
@@ -12,5 +14,8 @@ class LoginViewModel(private val repository: Repository): ViewModel() {
         viewModelScope.launch {
             repository.saveSession(user)
         }
+    }
+    fun getSession(): LiveData<UserModel> {
+        return repository.getSession().asLiveData()
     }
 }

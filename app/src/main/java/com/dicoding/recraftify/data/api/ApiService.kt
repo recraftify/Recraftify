@@ -12,7 +12,7 @@ interface ApiService {
     @POST("register")
     suspend fun register(
         @Field("name") name: String,
-        @Field("email") email: String,
+        @Field("username") username: String,
         @Field("password") password: String
     ): RegisterResponse
 
