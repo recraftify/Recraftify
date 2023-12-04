@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp"
+    android:padding="8dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/cl_rv"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/judul_resep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/judul_resep"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toTopOf="@id/cl_rv"
+            tools:ignore="NotSibling" />
+
+        <TextView
+            android:id="@+id/judul_jenis_sampah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/tv_judul_jenis_sampah"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/judul_resep" />
+
+        <TextView
+            android:id="@+id/jenis_sampah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_jenis_sampah"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/judul_jenis_sampah"
+            app:layout_constraintTop_toBottomOf="@+id/judul_resep"/>
+
+        <TextView
+            android:id="@+id/judul_metode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/judul_metode"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/judul_jenis_sampah"/>
+
+        <TextView
+            android:id="@+id/metode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_metode"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/judul_metode"
+            app:layout_constraintTop_toBottomOf="@+id/jenis_sampah"/>
+
+        <TextView
+            android:id="@+id/dampak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dampak"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/judul_metode"/>
+
+        <TextView
+            android:id="@+id/info_dampak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_dampak"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/dampak"
+            app:layout_constraintTop_toBottomOf="@+id/metode"/>
+
+        <TextView
+            android:id="@+id/manfaat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/manfaat"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/dampak"/>
+
+        <TextView
+            android:id="@+id/info_manfaat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/info_manfaat"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/manfaat"
+            app:layout_constraintTop_toBottomOf="@+id/info_dampak"/>
+
+        <TextView
+            android:id="@+id/judul_petunjuk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/judul_petunjuk"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/manfaat"/>
+
+        <TextView
+            android:id="@+id/petunjuk"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_langkah"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="@id/cl_rv"
+            app:layout_constraintTop_toBottomOf="@+id/judul_petunjuk"
+            app:layout_constraintEnd_toEndOf="@id/cl_rv"/>
+
+        <ImageView
+            android:id="@+id/iv_recipe"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@id/cl_rv"
+            tools:src="@tools:sample/avatars"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
