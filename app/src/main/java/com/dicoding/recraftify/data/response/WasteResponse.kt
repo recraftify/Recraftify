@@ -1,6 +1,8 @@
 package com.dicoding.recraftify.data.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class WasteResponse(
 
@@ -11,23 +13,24 @@ data class WasteResponse(
 	val message: String
 )
 
+@Parcelize
 data class DataItem(
 
-	@field:SerializedName("metode_pemilahan")
-	val metodePemilahan: String,
+	@field:SerializedName("instructions")
+	val instructions: String,
 
-	@field:SerializedName("petunjuk_langkah")
-	val petunjukLangkah: List<String>,
+	@field:SerializedName("method")
+	val method: String,
 
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("waste_type")
+	val wasteType: String,
+
 	@field:SerializedName("id")
 	val id: String,
 
-	@field:SerializedName("jenis_sampah")
-	val jenisSampah: String,
-
 	@field:SerializedName("url")
 	val url: String
-)
+): Parcelable

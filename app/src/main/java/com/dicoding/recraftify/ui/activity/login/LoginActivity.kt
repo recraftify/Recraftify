@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import com.dicoding.recraftify.MainActivity
 import com.dicoding.recraftify.data.preferences.UserModel
 import com.dicoding.recraftify.databinding.ActivityLoginBinding
@@ -47,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is ResultState.Success -> {
                         showLoading(false)
-                        viewModel.saveSession(UserModel(email,result.data.loginResult.token.toString(), true))
+                        viewModel.saveSession(UserModel(email, result.data.token.toString(), true))
                               val intent = Intent(this, MainActivity::class.java)
                               intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                               startActivity(intent)
