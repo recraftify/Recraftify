@@ -72,45 +72,6 @@
             app:layout_constraintStart_toEndOf="@+id/judul_metode"
             app:layout_constraintTop_toBottomOf="@+id/jenis_sampah"/>
 
-        <TextView
-            android:id="@+id/dampak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dampak"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="@id/cl_rv"
-            app:layout_constraintTop_toBottomOf="@+id/judul_metode"/>
-
-        <TextView
-            android:id="@+id/info_dampak"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/info_dampak"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/dampak"
-            app:layout_constraintTop_toBottomOf="@+id/metode"/>
-
-        <TextView
-            android:id="@+id/manfaat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/manfaat"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="@id/cl_rv"
-            app:layout_constraintTop_toBottomOf="@+id/dampak"/>
-
-        <TextView
-            android:id="@+id/info_manfaat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/info_manfaat"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/manfaat"
-            app:layout_constraintTop_toBottomOf="@+id/info_dampak"/>
 
         <TextView
             android:id="@+id/judul_petunjuk"
@@ -120,19 +81,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="@id/cl_rv"
-            app:layout_constraintTop_toBottomOf="@+id/manfaat"/>
-
-        <TextView
-            android:id="@+id/petunjuk"
-            android:layout_width="310dp"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_langkah"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintStart_toStartOf="@id/cl_rv"
-            app:layout_constraintTop_toBottomOf="@+id/judul_petunjuk"
-            app:layout_constraintEnd_toEndOf="@id/cl_rv"/>
+            app:layout_constraintTop_toBottomOf="@+id/judul_metode"/>
 
         <ImageView
             android:id="@+id/iv_recipe"

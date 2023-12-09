@@ -6,33 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.home.HomeFragment">
 
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/sb_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/searchbar"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="6dp" />
-            <androidx.appcompat.widget.SearchView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="@string/searchbar"
-                app:layout_anchor="@id/sb_home"
-                tools:ignore="MissingConstraints" />
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/searchBar"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="@string/searchbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+    </com.google.android.material.search.SearchBar>
+    <com.google.android.material.search.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/searchbar"
+        app:layout_anchor="@id/searchBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+    </com.google.android.material.search.SearchView>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_resep"
-        android:layout_width="411dp"
-        android:layout_height="643dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="715dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sb_home"
         tools:ignore="MissingConstraints"
         tools:listitem="@layout/item_recipe" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
