@@ -19,7 +19,7 @@
     <string name="title_signup">Mendaftar Recraftify</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="judul_resep">Judul Resep Pengolahan Sampah</string>
-    <string name="tv_judul_jenis_sampah">Jenis sampah :</string>
+    <string name="tv_judul_jenis_sampah">Kategori sampah :</string>
     <string name="tv_jenis_sampah">Daun kering</string>
     <string name="judul_metode">Metode pemilahan :</string>
     <string name="tv_metode">Kompos</string>
@@ -30,7 +30,8 @@
     <string name="manfaat">Manfaat daur ulang :</string>
     <string name="info_manfaat">info manfaat</string>
     <string name="default_web_client_id">201869056725-bdsounp9t9hgqpnrjg0kklu95mkcfj06.apps.googleusercontent.com</string>
-    <string name="result_title">Result:</string>
+    <string name="result_title">Hasil:</string>
     <string name="briging_tempat_sampah">"\"Sampah sebaiknya diletakkan di tempat sampah yang cocok dengan jenisnya, lihatlah panduan pada gambar tempat sampah di bawah untuk memastikan penempatan yang benar."\"</string>
     <string name="warning_empty">Silahkan masukkan berkas gambar terlebih dahulu.</string>
+    <string name="rekomendasi">Rekomendasi:</string>
 </resources>

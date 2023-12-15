@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.recraftify.data.response.Data
+import com.dicoding.recraftify.data.response.ScanResponse
 import com.dicoding.recraftify.databinding.ActivityResultBinding
 import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory
@@ -32,19 +33,16 @@ class ResultActivity : AppCompatActivity() {
         setupAction()
         binding.rvListRecomendation.adapter = adapter
         binding.rvListRecomendation.layoutManager = LinearLayoutManager(this)
-        resultScanning()
-    }
-    @RequiresApi(Build.VERSION_CODES.Q)
-    private fun resultScanning() {
-        val dataItem = intent.getParcelableExtra<Data>(data)
-        Log.d("Test", "$dataItem" )
+        val imageUri = intent.getStringExtra(EXTRA_IMAGE_URI)
+        val result = intent.getStringExtra(EXTRA_RESULT)
         binding.apply {
-            jenisSampah.text = dataItem?.result.toString()
+            jenisSampah.text = result
             Glide.with(this@ResultActivity)
-                .load(dataItem?.result)
+                .load(imageUri)
                 .into(ivScanWaste)
         }
     }
+
     private fun setupAction(){
 
         viewModel.getRecipe().observe(this){list ->
@@ -62,7 +60,6 @@ class ResultActivity : AppCompatActivity() {
                 is ResultState.Error -> {
                     Toast.makeText(this, "Gagal memuat data", Toast.LENGTH_SHORT).show()
                 }
-
                 else -> {}
             }
         }
@@ -72,6 +69,7 @@ class ResultActivity : AppCompatActivity() {
     }
     companion object {
         const val EXTRA_IMAGE_URI = "extra_image_uri"
+        const val EXTRA_RESULT = "extra_result"
         const val data = "id"
     }
 }

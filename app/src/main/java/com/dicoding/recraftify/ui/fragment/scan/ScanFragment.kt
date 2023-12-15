@@ -13,7 +13,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.dicoding.recraftify.databinding.FragmentScanBinding
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -26,6 +25,7 @@ import com.dicoding.recraftify.ui.activity.CameraActivity
 import com.dicoding.recraftify.ui.activity.CameraActivity.Companion.CAMERAX_RESULT
 import com.dicoding.recraftify.ui.activity.result.ResultActivity
 import com.dicoding.recraftify.R
+import com.dicoding.recraftify.data.api.ApiService
 import com.dicoding.recraftify.setting.ViewModelFactory
 import com.dicoding.recraftify.setting.reduceFileImage
 
@@ -60,9 +60,7 @@ class ScanFragment : Fragment() {
         binding.previewImageView.setOnClickListener { startGaleri() }
         binding.galleryButton.setOnClickListener { startGaleri() }
         binding.cameraButton.setOnClickListener { startCameraX() }
-        binding.uploadButton.setOnClickListener {
-            uploadScan()
-        }
+        binding.uploadButton.setOnClickListener { uploadScan() }
         return binding.root
     }
 
@@ -115,7 +113,8 @@ class ScanFragment : Fragment() {
                             showLoading(false)
                             val intent = Intent(requireContext(), ResultActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            intent.putExtra(ResultActivity.EXTRA_IMAGE_URI, waste.data.data.result)
+                            intent.putExtra(ResultActivity.EXTRA_IMAGE_URI, uri.toString())
+                            intent.putExtra(ResultActivity.EXTRA_RESULT, waste.data.data.result)
                             startActivityForResult(intent, REQUEST_CODE_SCAN)
                         }
 
@@ -129,14 +128,6 @@ class ScanFragment : Fragment() {
             }
         } ?: showToast(getString(R.string.warning_empty))
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_SCAN && resultCode == Activity.RESULT_OK){
-
-        }
-    }
-
     private fun allPermissionGranted() = ContextCompat.checkSelfPermission(
         requireContext(), REQUIRED_PERMISSION ) == PackageManager.PERMISSION_GRANTED
 
