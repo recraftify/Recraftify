@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "201869056725",
+    "project_id": "recraftify-service",
+    "storage_bucket": "recraftify-service.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201869056725:android:dc9c98f4c1da14bd70e05c",
+        "android_client_info": {
+          "package_name": "com.dicoding.recraftify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201869056725-dq6lipt7th8b4s1n7fc4ddfq1spgj6u8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.recraftify",
+            "certificate_hash": "0ec8d3fcaa56f23f88c974d332d69ae3c4c80952"
+          }
+        },
+        {
+          "client_id": "201869056725-bdsounp9t9hgqpnrjg0kklu95mkcfj06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwua-OrVGPMV5oQd0AepYLpbwp06P4Fjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201869056725-bdsounp9t9hgqpnrjg0kklu95mkcfj06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
