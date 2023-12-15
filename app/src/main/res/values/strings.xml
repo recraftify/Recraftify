@@ -31,6 +31,6 @@
     <string name="info_manfaat">info manfaat</string>
     <string name="default_web_client_id">201869056725-bdsounp9t9hgqpnrjg0kklu95mkcfj06.apps.googleusercontent.com</string>
     <string name="result_title">Result:</string>
-    <string name="briging_tempat_sampah">"\"Sampah sebaiknya diletakkan di tempat sampah yang cocok dengan jenisnya, lihatlah panduan pada gambar tong sampah di bawah untuk memastikan penempatan yang benar."\"</string>
+    <string name="briging_tempat_sampah">"\"Sampah sebaiknya diletakkan di tempat sampah yang cocok dengan jenisnya, lihatlah panduan pada gambar tempat sampah di bawah untuk memastikan penempatan yang benar."\"</string>
     <string name="warning_empty">Silahkan masukkan berkas gambar terlebih dahulu.</string>
 </resources>
