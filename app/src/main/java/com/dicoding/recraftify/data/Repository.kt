@@ -4,26 +4,48 @@ import androidx.lifecycle.liveData
 import com.dicoding.recraftify.data.api.ApiService
 import com.dicoding.recraftify.data.preferences.UserModel
 import com.dicoding.recraftify.data.preferences.UserPreference
-import com.dicoding.recraftify.data.response.DataItem
 import com.dicoding.recraftify.data.response.LoginResponse
+import com.dicoding.recraftify.data.response.ScanResponse
 import com.dicoding.recraftify.data.response.SignupResponse
 import com.dicoding.recraftify.data.response.WasteResponse
 import com.dicoding.recraftify.setting.ResultState
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.HttpException
+import java.io.File
 
 class Repository constructor(
     private val userPreference: UserPreference,
     private val apiService: ApiService,
 ){
-    suspend fun searchRecipe(query:String): ResultState<List<DataItem>>{
+    fun upWasteScan(file:File) = liveData {
+        emit(ResultState.Loading)
+        val requestBody = file.asRequestBody("image/jpeg".toMediaType())
+        val multipartBody = MultipartBody.Part.createFormData(
+            "image",
+            file.name,
+            requestBody
+        )
         try {
-            val seacrhresult = apiService.seacrhRecipe(query)
-            return ResultState.Success(seacrhresult)
-        }catch (e: Exception){
-            return ResultState.Error("Data tidak ditemukan")
+            val successResponse = apiService.uploadImage(multipartBody)
+            emit(ResultState.Success(successResponse))
+        }catch (e: HttpException){
+            val jsonInString = e.response()?.errorBody()?.string()
+            if (jsonInString != null && jsonInString.isNotEmpty()){
+                emit(ResultState.Error(jsonInString))
+            }else{
+                try {
+                    val jsonInString = e.response()?.errorBody()?.string()
+                    val errorBody = Gson().fromJson(jsonInString, ScanResponse::class.java)
+                    emit(ResultState.Error(errorBody.message))
+                }catch (jsonException: JsonSyntaxException){
+                    emit(ResultState.Error("Error parsing error response"))
+                }
+            }
         }
     }
     fun getRecipe() = liveData{

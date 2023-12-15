@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.recraftify.data.Repository
 import com.dicoding.recraftify.setting.di.Injection
 import com.dicoding.recraftify.ui.activity.login.LoginViewModel
+import com.dicoding.recraftify.ui.activity.result.ResultViewModel
 import com.dicoding.recraftify.ui.activity.signup.SignupViewModel
 import com.dicoding.recraftify.ui.fragment.home.HomeViewModel
+import com.dicoding.recraftify.ui.fragment.scan.ScanViewModel
 
 class ViewModelFactory(private val repository: Repository): ViewModelProvider.NewInstanceFactory() {
 
@@ -22,6 +24,12 @@ class ViewModelFactory(private val repository: Repository): ViewModelProvider.Ne
             }
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ScanViewModel::class.java) -> {
+                ScanViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ResultViewModel::class.java) -> {
+                ResultViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unkown ViewModel class: "+modelClass.name)
         }
