@@ -25,7 +25,6 @@ import com.dicoding.recraftify.ui.activity.CameraActivity
 import com.dicoding.recraftify.ui.activity.CameraActivity.Companion.CAMERAX_RESULT
 import com.dicoding.recraftify.ui.activity.result.ResultActivity
 import com.dicoding.recraftify.R
-import com.dicoding.recraftify.data.api.ApiService
 import com.dicoding.recraftify.setting.ViewModelFactory
 import com.dicoding.recraftify.setting.reduceFileImage
 
@@ -109,12 +108,16 @@ class ScanFragment : Fragment() {
                             showLoading(true)
                         }
                         is ResultState.Success -> {
-                            showToast(waste.data.message)
+                            waste.data.message?.let { showToast(it) }
                             showLoading(false)
                             val intent = Intent(requireContext(), ResultActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             intent.putExtra(ResultActivity.EXTRA_IMAGE_URI, uri.toString())
-                            intent.putExtra(ResultActivity.EXTRA_RESULT, waste.data.data.result)
+                            intent.putExtra(ResultActivity.EXTRA_RESULT, waste.data.data?.trashType)
+                            intent.putExtra(ResultActivity.EXTRA_IMAGE_TONG_SAMPAH, waste.data.data?.imageResult)
+                            intent.putParcelableArrayListExtra(
+                                ResultActivity.EXTRA_RECOMMENDATIONS,
+                                ArrayList(waste.data?.data?.recommendation.orEmpty())
+                            )
                             startActivityForResult(intent, REQUEST_CODE_SCAN)
                         }
 
