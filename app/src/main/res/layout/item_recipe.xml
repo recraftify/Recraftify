@@ -26,7 +26,7 @@
             android:layout_marginStart="27dp"
             android:layout_marginEnd="20dp"
             android:text="@string/judul_resep"
-            android:textColor="@color/white"
+            android:textColor="@color/md_theme_light_secondaryContainer"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
