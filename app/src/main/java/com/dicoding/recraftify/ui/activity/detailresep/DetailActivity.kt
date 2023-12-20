@@ -54,6 +54,9 @@ class DetailActivity : AppCompatActivity() {
             dataItem.data?.instructions?.let { instructions ->
                 petunjuk.text = instructions.joinToString ( "\n" )
             }
+            Glide.with(this@DetailActivity)
+                .load(R.drawable.icon)
+                .into(ivLogo)
         }
     }
 
