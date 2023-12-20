@@ -8,16 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.dicoding.recraftify.data.Repository
 import com.dicoding.recraftify.data.preferences.UserModel
 import kotlinx.coroutines.launch
+import java.io.File
 
 class HomeViewModel(private val repository: Repository): ViewModel() {
     private val isLoading = MutableLiveData<Boolean>()
     val _isLoading: LiveData<Boolean> = isLoading
 
-    fun searchRecipe(query:String){
-        viewModelScope.launch {
-            repository.searchRecipe(query)
-        }
-    }
    fun getRecipe() = repository.getRecipe()
     fun logout(){
         viewModelScope.launch {

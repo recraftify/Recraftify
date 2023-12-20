@@ -4,7 +4,11 @@ import androidx.lifecycle.liveData
 import com.dicoding.recraftify.data.api.ApiService
 import com.dicoding.recraftify.data.preferences.UserModel
 import com.dicoding.recraftify.data.preferences.UserPreference
+import com.dicoding.recraftify.data.response.HistoryIdResponse
+import com.dicoding.recraftify.data.response.HistoryResponse
 import com.dicoding.recraftify.data.response.LoginResponse
+import com.dicoding.recraftify.data.response.ProfileResponse
+import com.dicoding.recraftify.data.response.WasteIdResponse
 import com.dicoding.recraftify.data.response.ScanResponse
 import com.dicoding.recraftify.data.response.SignupResponse
 import com.dicoding.recraftify.data.response.WasteResponse
@@ -20,8 +24,44 @@ import java.io.File
 
 class Repository constructor(
     private val userPreference: UserPreference,
-    private val apiService: ApiService,
-){
+    private val apiService: ApiService
+    ){
+    suspend fun profile() : ResultState<ProfileResponse>{
+        try {
+            val response = apiService.profile()
+            return ResultState.Success(response)
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, ProfileResponse::class.java)
+            throw Exception(errorResponse.message ?: "Unknown error")
+        }
+    }
+    suspend fun getHistoryById(id:String) : HistoryIdResponse {
+        try {
+            val response = apiService.historyId(id)
+            println("API Response: $response")
+            return response
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, HistoryIdResponse::class.java)
+            throw Exception(errorResponse.message ?: "Unknown error")
+        }
+    }
+    fun getHistory() = liveData{
+        emit(ResultState.Loading)
+        try {
+            val succesResponse = apiService.history()
+            emit(ResultState.Success(succesResponse))
+        }catch (e: Exception){
+            if (e is HttpException) {
+                val errorBody = e.response()?.errorBody()?.string()
+                val errorResponse = Gson().fromJson(errorBody, HistoryResponse::class.java)
+                emit(ResultState.Error(errorResponse.message))
+            }else{
+                emit(ResultState.Error(e.message.toString()))
+            }
+        }
+    }
     fun upWasteScan(file:File) = liveData {
         emit(ResultState.Loading)
         val requestBody = file.asRequestBody("image/jpeg".toMediaType())
@@ -46,6 +86,17 @@ class Repository constructor(
                     emit(ResultState.Error("Error parsing error response"))
                 }
             }
+        }
+    }
+    suspend fun getRecipeById(id:String) : WasteIdResponse {
+        try {
+            val response = apiService.recipeById(id)
+            println("API Response: $response")
+            return response
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, WasteIdResponse::class.java)
+            throw Exception(errorResponse.message ?: "Unknown error")
         }
     }
     fun getRecipe() = liveData{

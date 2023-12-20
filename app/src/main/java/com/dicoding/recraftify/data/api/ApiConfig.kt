@@ -19,9 +19,13 @@ object ApiConfig {
             }
         val authInterceptor = Interceptor { chain ->
             val request = chain.request()
-            val requestHeader = request.newBuilder()
-                .addHeader("Authorization", "Bearer $token")
-                .build()
+            val requestHeader = if (token.isNotEmpty()) {
+                request.newBuilder()
+                    .addHeader("Authorization", "Bearer $token")
+                    .build()
+            }else{
+                request
+            }
             chain.proceed(requestHeader)
         }
         val timeoutInSeconds = 60L

@@ -15,12 +15,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.recraftify.R
-import com.dicoding.recraftify.data.response.DataItem
 import com.dicoding.recraftify.databinding.FragmentHomeBinding
 import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory
 import com.dicoding.recraftify.ui.activity.login.LoginActivity
 import com.dicoding.recraftify.ui.fragment.scan.ARG_PARAM2
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 private const val ARG_PARAM1 = "param1"
 
@@ -30,6 +32,7 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
     private lateinit var viewModel : HomeViewModel
     private lateinit var adapter: HomeAdapter
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +49,15 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
         setHasOptionsMenu(true)
         viewModel = ViewModelProvider(this, ViewModelFactory.getInstance(requireContext()))[HomeViewModel::class.java]
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getSession().observe(requireActivity()){user ->
+            auth = Firebase.auth
+            val firebaseUser = auth.currentUser
             if(!user.isLogin){
                 startActivity(Intent(requireActivity(), LoginActivity::class.java))
                 activity?.finish()
@@ -71,7 +77,7 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
                 is ResultState.Loading -> {
                 }
                 is ResultState.Success -> {
-                    if (result.data.data.isEmpty()){
+                    if (result.data.data!!.isEmpty()){
                         Toast.makeText(requireContext(), "Data tidak ditemukan", Toast.LENGTH_SHORT).show()
                     }else{
                         adapter.submitList(result.data.data)
@@ -85,29 +91,6 @@ class HomeFragment : Fragment(), View.OnCreateContextMenuListener {
         }
 
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.app_bar, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.logout){
-            AlertDialog.Builder(requireActivity()).apply {
-                setTitle("Logout!")
-                setMessage("Apakah anda yakin ingin logout?")
-                setPositiveButton("Logout") { _, _ ->
-                    viewModel.logout()
-                }
-                create()
-                show()
-            }
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     companion object {
         @JvmStatic

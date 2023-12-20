@@ -10,8 +10,12 @@
         android:icon="@drawable/camera"
         android:title="@string/scan" />
     <item
-        android:id="@+id/navigation_maps"
-        android:icon="@drawable/maps"
-        android:title="@string/maps" />
+        android:id="@+id/navigation_history"
+        android:icon="@drawable/history"
+        android:title="@string/history" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile"
+        android:title="@string/profile" />
 
 </menu>

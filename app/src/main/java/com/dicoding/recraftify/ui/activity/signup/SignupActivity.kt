@@ -43,7 +43,7 @@ class SignupActivity : AppCompatActivity() {
                         showLoading(false)
                         AlertDialog.Builder(this).apply {
                             setTitle("Ya!!")
-                            setMessage("Email $email berhasil dibuat, silahkan login terlebih dahulu")
+                            setMessage("Email $email berhasil dibuat, silahkan lakukan \"Login\" terlebih dahulu")
                             setPositiveButton("Lanjut"){_,_ ->
                                 val intent = Intent(context, LoginActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
