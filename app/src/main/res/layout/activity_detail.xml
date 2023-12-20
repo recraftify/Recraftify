@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo_kecil"
+                android:src="@drawable/icon"
                 app:layout_collapseMode="parallax"
                 android:layout_marginBottom="-20dp"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -102,11 +102,11 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="110dp"
-                android:layout_height="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp"
-                tools:src="@drawable/logo_kecil" />
+                tools:src="@drawable/icon" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
