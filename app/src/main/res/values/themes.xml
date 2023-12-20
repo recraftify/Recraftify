@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Recraftify" parent="Theme.Material3.DayNight">
+        <item name="fontFamily">@font/baloo_bhai_2</item>
+        <item name="android:fontFamily">@font/baloo_bhai_2</item>
+
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
