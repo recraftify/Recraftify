@@ -20,7 +20,7 @@ class EditTextEmail : AppCompatEditText {
             override fun onTextChanged(text: CharSequence, start: Int, lengthBefore: Int,
                                        lengthAfter: Int
             ) {
-                val isEmailValid = text.toString().endsWith("@gmail.com") || text.toString().endsWith("@dicoding.com")
+                val isEmailValid = text.toString().endsWith("@gmail.com") || text.toString().endsWith("@yahoo.com")
                 if(isEmailValid){
                     setError(null)
                 }else{

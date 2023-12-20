@@ -18,10 +18,14 @@
         tools:layout="@layout/fragment_scan" />
 
     <fragment
-        android:id="@+id/navigation_maps"
-        android:name="com.dicoding.recraftify.ui.fragment.MapsFragment"
-        android:label="@string/maps"
-        tools:layout="@layout/fragment_maps" />
-
+        android:id="@+id/navigation_history"
+        android:name="com.dicoding.recraftify.ui.fragment.history.HistoryFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.dicoding.recraftify.ui.fragment.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>
