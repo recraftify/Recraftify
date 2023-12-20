@@ -1,7 +1,6 @@
 package com.dicoding.recraftify.ui.activity
 
 import android.content.Intent
-import android.media.Image
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,14 +32,21 @@ class CameraActivity : AppCompatActivity() {
             else CameraSelector.DEFAULT_BACK_CAMERA
             startCamera() }
         binding.captureImage.setOnClickListener { takePhoto() }
-    }
 
+    }
+    override fun onPause() {
+        super.onPause()
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            cameraProvider.unbindAll()
+        }, ContextCompat.getMainExecutor(this))
+    }
     public override fun onResume() {
         super.onResume()
         hideSystem()
         startCamera()
     }
-
     private fun startCamera(){
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
@@ -84,7 +90,6 @@ class CameraActivity : AppCompatActivity() {
             }
         )
     }
-
     private fun hideSystem(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
             window.insetsController?.hide(WindowInsets.Type.statusBars())
@@ -96,7 +101,6 @@ class CameraActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
     }
-
     companion object {
         private const val TAG = "CameraActivity"
         const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
