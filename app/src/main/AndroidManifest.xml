@@ -37,7 +37,8 @@
         <activity
             android:name=".ui.activity.CameraActivity"
             android:exported="false"
-            android:screenOrientation="portrait" /> <!-- Trigger Google Play services to install the backported photo picker module. -->
+            android:screenOrientation="portrait" />
+        <!-- Trigger Google Play services to install the backported photo picker module. -->
         <!-- suppress AndroidDomInspection -->
         <service
             android:name="com.google.android.gms.metadata.ModuleDependencies"
