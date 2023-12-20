@@ -1,36 +1,24 @@
 package com.dicoding.recraftify.data.response
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
 data class WasteResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItem>,
+	val data: List<DataList?>? = null,
 
 	@field:SerializedName("message")
-	val message: String
+	val message: String? = null
 )
 
-@Parcelize
-data class DataItem(
+data class DataList(
 
-	@field:SerializedName("instructions")
-	val instructions: String,
-
-	@field:SerializedName("method")
-	val method: String,
+	@field:SerializedName("image")
+	val image: String? = null,
 
 	@field:SerializedName("name")
-	val name: String,
-
-	@field:SerializedName("waste_type")
-	val wasteType: String,
+	val name: String? = null,
 
 	@field:SerializedName("id")
-	val id: String,
-
-	@field:SerializedName("url")
-	val url: String
-): Parcelable
+	val id: String? = null
+)
