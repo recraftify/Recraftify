@@ -17,7 +17,6 @@ class DetailHistoryViewModel(private  var repository: Repository): ViewModel() {
     private val _recommendations = MutableLiveData<ResultState<List<RecommendationItem>>>()
     val recommendations: LiveData<ResultState<List<RecommendationItem>>> = _recommendations
 
-
     fun getHistory(id: String){
         viewModelScope.launch {
             try {

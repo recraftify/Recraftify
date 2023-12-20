@@ -23,11 +23,9 @@ class DetailHistoryActivity : AppCompatActivity() {
         supportActionBar?.hide()
         val history = intent.getStringExtra(dataId)
         history?.let { viewModel.getHistory(it) }
-
         recommendationAdapter = RecommendationAdapter()
         binding.rvRecipe.adapter = recommendationAdapter
         binding.rvRecipe.layoutManager = LinearLayoutManager(this)
-
         viewModel.historyDetail.observe(this){history ->
             when(history){
                 is ResultState.Loading ->{
@@ -60,7 +58,6 @@ class DetailHistoryActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun setHistoryDetail(dataHistory: HistoryIdResponse){
         binding.apply {
             Glide.with(this@DetailHistoryActivity)
@@ -73,7 +70,6 @@ class DetailHistoryActivity : AppCompatActivity() {
 
         }
     }
-
     companion object{
         const val dataId = "id"
     }
