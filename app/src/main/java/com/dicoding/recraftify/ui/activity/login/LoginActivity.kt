@@ -101,10 +101,10 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignup.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
-        binding.btnSignInGoogle.setOnClickListener {
+        /*binding.btnSignInGoogle.setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
             resultLauncher.launch(signInIntent)
-        }
+        }*/
     }
 
     private var resultLauncher = registerForActivityResult(
