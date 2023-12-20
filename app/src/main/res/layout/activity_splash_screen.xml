@@ -10,7 +10,7 @@
         android:id="@+id/logo_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/logo_recraftify"
+        android:src="@drawable/logo_kecil"
         android:padding="40dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
