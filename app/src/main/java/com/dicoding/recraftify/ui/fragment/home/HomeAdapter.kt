@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.recraftify.data.response.DataList
 import com.dicoding.recraftify.databinding.ItemRecipeBinding
-import com.dicoding.recraftify.ui.activity.detailhistory.DetailHistoryActivity
 import com.dicoding.recraftify.ui.activity.detailresep.DetailActivity
 
 
@@ -43,7 +42,6 @@ class HomeAdapter() : ListAdapter<DataList, HomeAdapter.MyViewHolder>(DIFF_CALLB
             override fun areItemsTheSame(oldItem: DataList, newItem: DataList): Boolean {
                 return oldItem == newItem
             }
-
             override fun areContentsTheSame(oldItem: DataList, newItem: DataList): Boolean {
                 return oldItem == newItem
             }
