@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import com.dicoding.recraftify.MainActivity
 import com.dicoding.recraftify.databinding.ActivitySignUpBinding
 import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory

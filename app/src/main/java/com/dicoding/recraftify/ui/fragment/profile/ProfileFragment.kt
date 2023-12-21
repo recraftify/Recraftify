@@ -10,13 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.dicoding.recraftify.R
-import com.dicoding.recraftify.data.response.DataProfile
 import com.dicoding.recraftify.data.response.ProfileResponse
 import com.dicoding.recraftify.databinding.FragmentProfileBinding
-import com.dicoding.recraftify.databinding.FragmentScanBinding
 import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory
-import com.dicoding.recraftify.ui.fragment.scan.ScanViewModel
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.Locale

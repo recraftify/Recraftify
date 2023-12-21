@@ -8,14 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.recraftify.R
 import com.dicoding.recraftify.databinding.FragmentHistoryBinding
-import com.dicoding.recraftify.databinding.FragmentHomeBinding
 import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory
-import com.dicoding.recraftify.ui.fragment.home.HomeAdapter
-import com.dicoding.recraftify.ui.fragment.home.HomeViewModel
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"

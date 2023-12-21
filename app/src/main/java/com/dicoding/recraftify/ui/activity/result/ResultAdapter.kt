@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dicoding.recraftify.data.response.Recommendation
 import com.dicoding.recraftify.databinding.ItemRecipeBinding
-import com.dicoding.recraftify.ui.activity.detailhistory.DetailHistoryActivity
 import com.dicoding.recraftify.ui.activity.detailresep.DetailActivity
 
 class ResultAdapter : ListAdapter<Recommendation, ResultAdapter.ResultViewHolder> (DIFF_CALLBACK){

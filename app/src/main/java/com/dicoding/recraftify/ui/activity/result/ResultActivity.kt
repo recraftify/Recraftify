@@ -4,7 +4,6 @@ package com.dicoding.recraftify.ui.activity.result
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.dicoding.recraftify.data.response.Recommendation
 import com.dicoding.recraftify.databinding.ActivityResultBinding
-import com.dicoding.recraftify.setting.ResultState
 import com.dicoding.recraftify.setting.ViewModelFactory
-import com.dicoding.recraftify.ui.fragment.home.HomeAdapter
 
 class ResultActivity : AppCompatActivity() {
 
